@@ -1,5 +1,6 @@
 import React from 'react';
 import { Notifications } from 'expo';
+import Alert from 'react-native';
 import { createSwitchNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
@@ -12,30 +13,25 @@ const AppNavigator = createSwitchNavigator({
 });
 
 export default class RootNavigation extends React.Component {
-  componentDidMount() {
-    this._notificationSubscription = this._registerForPushNotifications();
+  constructor(props) {
+    super(props);
+    this.state = {
+      notification: null
+    };
+
+  }
+  componentWillMount(){
+    registerForPushNotificationsAsync();
+    this._notificationSubscription = Notifications.addListener(this._handleNotification);
   }
 
-  componentWillUnmount() {
-    this._notificationSubscription && this._notificationSubscription.remove();
-  }
+  _handleNotification = (notification) => {
+    this.setState({notification: notification});
+    console.log(notification);
+    Alert.alert('t', JSON.stringify(this.state.notification.data))
+  };
 
   render() {
     return <AppNavigator />;
   }
-
-  _registerForPushNotifications() {
-    // Send our push token over to our backend so we can receive notifications
-    // You can comment the following line out if you want to stop receiving
-    // a notification every time you open the app. Check out the source
-    // for this function in api/registerForPushNotificationsAsync.js
-    registerForPushNotificationsAsync();
-
-    // Watch for incoming notifications
-    this._notificationSubscription = Notifications.addListener(this._handleNotification);
-  }
-
-  _handleNotification = ({ origin, data }) => {
-    console.log(`Push notification ${origin} with data: ${JSON.stringify(data)}`);
-  };
 }

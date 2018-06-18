@@ -12,6 +12,13 @@ import { WebBrowser } from 'expo';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { MonoText } from '../components/StyledText';
 
+const pending = {key:'pending', color: 'blue', selectedDotColor: 'orange'};
+const completed = {key:'completed', color: 'blue', selectedDotColor: 'blue'};
+const paid = {key:'paid', color: 'blue', selectedDotColor: 'lime'};
+
+
+
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Schedule',
@@ -31,6 +38,25 @@ export default class HomeScreen extends React.Component {
           onDayPress={(day)=>{this.props.navigation.navigate('Events', {
             date: day
           });}}
+
+          markedDates={
+            {
+              '2018-06-22': {dots: [completed, paid], selected: true, selectedColor: 'gainsboro'},
+              '2018-06-29': {dots: [pending, completed], selected: true, selectedColor: 'gainsboro'},
+              '2018-06-18': {dots: [pending, completed, paid], selected: true, selectedColor: 'gainsboro'},
+              '2018-06-20': {dots: [pending, paid], selected: true, selectedColor: 'gainsboro'},
+              '2018-06-13': {dots: [pending, completed, paid], selected: true, selectedColor: 'gainsboro'},
+              '2018-06-14': {dots: [pending, completed, paid], selected: true, selectedColor: 'gainsboro'},
+              '2018-06-16': {dots: [pending, completed, paid], selected: true, selectedColor: 'gainsboro'},
+              '2018-07-03': {dots: [pending, completed, paid], selected: true, selectedColor: 'gainsboro'},
+              '2018-07-06': {dots: [pending, paid], selected: true, selectedColor: 'gainsboro'},
+              '2018-07-07': {dots: [pending, completed], selected: true, selectedColor: 'gainsboro'},
+              '2018-07-09': {dots: [pending, completed], selected: true, selectedColor: 'gainsboro'},
+              '2018-07-12': {dots: [pending, completed, paid], selected: true, selectedColor: 'gainsboro'},
+              '2018-07-16': {dots: [pending], selected: true, selectedColor: 'gainsboro'},
+              '2018-07-19': {dots: [pending], selected: true, selectedColor: 'gainsboro'},
+          }}
+          markingType={'multi-dot'}
           // Max amount of months allowed to scroll to the past. Default = 50
           pastScrollRange={50}
           // Max amount of months allowed to scroll to the future. Default = 50

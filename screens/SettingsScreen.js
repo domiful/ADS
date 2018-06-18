@@ -1,14 +1,80 @@
-import React from 'react';
-import { ExpoConfigView } from '@expo/samples';
-
-export default class SettingsScreen extends React.Component {
+import React, { Component } from 'react';
+import {Image} from 'react-native';
+import { Container, Header, Content, List, ListItem, Text, Icon, Left, Body, Right, Switch, Card, CardItem, Thumbnail, Button } from 'native-base';
+export default class SettingsScreen extends Component {
   static navigationOptions = {
-    title: 'app.json',
+    title: "Appointments",
+    headerStyle: {
+      backgroundColor: '#2864B3',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'normal',
+    },
   };
 
   render() {
-    /* Go ahead and delete ExpoConfigView and replace it with your
-     * content, we just wanted to give you a quick view of your config */
-    return <ExpoConfigView />;
+    return (
+      <Container>
+        <Content>
+          <Card>
+          <CardItem>
+            <Left>
+            <Thumbnail large source={{uri: 'http://pitchenginelive.blob.core.windows.net/dev/92965bf3-256c-4e39-ab66-816ed9281310/796be89c-5bf0-4325-aeaa-e625657b084c.jpg'}} />
+              <Body>
+                <Text>Jim Smith, Account Manager</Text>
+                <Text note>#125672</Text>
+              </Body>
+            </Left>
+          </CardItem>
+          <CardItem>
+            <Left>
+              <Button transparent>
+                <Icon active name="calendar" />
+                <Text>4 Total</Text>
+              </Button>
+            </Left>
+            <Body>
+              <Button transparent>
+                <Icon active name="checkmark" />
+                <Text>2 Confirmed</Text>
+              </Button>
+            </Body>
+            <Right>
+            <Button transparent>
+              <Icon active name="clock" />
+              <Text>2 Pending</Text>
+            </Button>
+            </Right>
+          </CardItem>
+        </Card>
+          <List>
+            <ListItem icon>
+              <Left>
+                <Icon name="alert" />
+              </Left>
+              <Body>
+                <Text>Push Notifications</Text>
+              </Body>
+              <Right>
+                <Switch value={false} />
+              </Right>
+            </ListItem>
+            
+            <ListItem icon>
+              <Left>
+                <Icon name="power" />
+              </Left>
+              <Body>
+                <Text>Logout</Text>
+              </Body>
+              <Right>
+                <Icon name="arrow-forward" />
+              </Right>
+            </ListItem>
+          </List>
+        </Content>
+      </Container>
+    );
   }
 }
