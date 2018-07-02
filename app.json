@@ -21,7 +21,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ads.schedule"
+    },
+    "android": {
+      "package": "com.ads.schedule"
     }
   }
 }

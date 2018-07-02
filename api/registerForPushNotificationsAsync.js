@@ -23,21 +23,10 @@ export default (async function registerForPushNotificationsAsync() {
   let token = await Notifications.getExpoPushTokenAsync();
   postToken(token);
   // POST the token to our backend so we can use it to send pushes from there
-  return fetch(PUSH_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      token: {
-        value: token,
-      },
-    }),
-  });
+  
 });
 
-export function postToken(token) {
+function postToken(token) {
   let url = "https://2F361ADD231B4D6A8EA2319710C97E44.uscom-east-1.oraclecloud.com:443/mobile/platform/storage/collections/token/objects";
   let auth = {
     headers: {

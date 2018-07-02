@@ -29,21 +29,21 @@ export default class SettingsScreen extends Component {
           </CardItem>
           <CardItem>
             <Left>
-              <Button transparent>
+              <Button transparent success>
                 <Icon active name="calendar" />
-                <Text>4 Total</Text>
+                <Text>7 Completed Service</Text>
               </Button>
             </Left>
             <Body>
               <Button transparent>
                 <Icon active name="checkmark" />
-                <Text>2 Confirmed</Text>
+                <Text>6 Awaiting Service</Text>
               </Button>
             </Body>
             <Right>
-            <Button transparent>
+            <Button transparent warning>
               <Icon active name="clock" />
-              <Text>2 Pending</Text>
+              <Text>2 Pending Payment</Text>
             </Button>
             </Right>
           </CardItem>
@@ -57,11 +57,11 @@ export default class SettingsScreen extends Component {
                 <Text>Push Notifications</Text>
               </Body>
               <Right>
-                <Switch value={false} />
+                <Switch value={true} />
               </Right>
             </ListItem>
             
-            <ListItem icon>
+            <ListItem icon onPress={()=>{this.props.navigation.navigate('Login');}}>
               <Left>
                 <Icon name="power" />
               </Left>

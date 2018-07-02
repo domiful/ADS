@@ -15,16 +15,15 @@ export default class LinksScreen extends React.Component {
   };
 
   render() {
-    let jsCode = `
-        document.document.getElementsByTagName("BODY")[0].style.background = "none";
-    `;
+    let jsCode = 'console.log("This is showing in the console!");';
    // let yourAlert = 'alert(document.getElementById("web-messenger-container").contentDocument.getElementById("mount").children.length)';
     return (
       <View style={styles.container}>
         <WebView
-        source={{uri: "https://ads-gse00014266.uscom-east-1.oraclecloud.com/"}}
-        style={{ alignSelf: 'stretch', flex: 1,height: 900, marginTop:-50, marginLeft:-5 }}
-        injectedJavaScript={jsCode}
+          source={{uri: "https://ads-gse00014266.uscom-east-1.oraclecloud.com/"}}
+          style={{ alignSelf: 'stretch', flex: 1,height: 900, marginTop:-50, marginLeft:-5 }}
+          injectedJavaScript={jsCode}
+          scalesPageToFit={false}
         />
       </View>
     );

@@ -1,15 +1,23 @@
 import React from 'react';
 import { Notifications } from 'expo';
 import Alert from 'react-native';
-import { createSwitchNavigator } from 'react-navigation';
+import {Toast, Root} from 'native-base';
+import { createSwitchNavigator, createStackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
+import LoginScreen from '../screens/LoginScreen';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 
+
+const Login = createStackNavigator({ Login: LoginScreen });
 const AppNavigator = createSwitchNavigator({
   // You could add another route here for authentication.
   // Read more at https://reactnavigation.org/docs/en/auth-flow.html
+  Login: Login,
   Main: MainTabNavigator,
+},
+{
+  initialRouteName: 'Login',
 });
 
 export default class RootNavigation extends React.Component {
@@ -27,11 +35,13 @@ export default class RootNavigation extends React.Component {
 
   _handleNotification = (notification) => {
     this.setState({notification: notification});
-    console.log(notification);
-    Alert.alert('t', JSON.stringify(this.state.notification.data))
+    Toast.show({
+      text: this.state.notification.data.message,
+      buttonText: 'Okay'
+    });
   };
 
   render() {
-    return <AppNavigator />;
+    return <Root><AppNavigator /></Root>;
   }
 }

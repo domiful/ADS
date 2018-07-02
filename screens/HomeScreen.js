@@ -12,9 +12,9 @@ import { WebBrowser } from 'expo';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { MonoText } from '../components/StyledText';
 
-const pending = {key:'pending', color: 'blue', selectedDotColor: 'orange'};
+const pending = {key:'pending', color: 'orange', selectedDotColor: 'orange'};
 const completed = {key:'completed', color: 'blue', selectedDotColor: 'blue'};
-const paid = {key:'paid', color: 'blue', selectedDotColor: 'lime'};
+const paid = {key:'paid', color: 'lime', selectedDotColor: 'lime'};
 
 
 
@@ -42,7 +42,7 @@ export default class HomeScreen extends React.Component {
           markedDates={
             {
               '2018-06-22': {dots: [completed, paid], selected: true, selectedColor: 'gainsboro'},
-              '2018-06-29': {dots: [pending, completed], selected: true, selectedColor: 'gainsboro'},
+              '2018-06-29': {dots: [pending, completed, paid], selected: true, selectedColor: 'gainsboro'},
               '2018-06-18': {dots: [pending, completed, paid], selected: true, selectedColor: 'gainsboro'},
               '2018-06-20': {dots: [pending, paid], selected: true, selectedColor: 'gainsboro'},
               '2018-06-13': {dots: [pending, completed, paid], selected: true, selectedColor: 'gainsboro'},
